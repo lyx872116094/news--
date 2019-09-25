@@ -12,6 +12,9 @@ const {CleanWebpackPlugin}= require('clean-webpack-plugin');
 // 引入vue-loader插件
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+// 导入复制文件夹的插件
+const CopyPlugin = require("copy-webpack-plugin");
+
 
 // webpack的配置
 module.exports = {
@@ -96,7 +99,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "public/index.html"	// template指定默认html模板
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+
+        new CopyPlugin([
+            { from: 'static', to: 'static' },
+        ]),
     ]
 
 }
